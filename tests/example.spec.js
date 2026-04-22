@@ -19,7 +19,6 @@ test('get started link', async ({ page }) => {
 });
 
 test('login com sucesso', async ({ page }) => {
-  await page.goto('https://automationpratice.com.br/');
   await page.getByRole('link', { name: ' Login' }).click();
   await page.locator('#user').fill('erikacrs13@gmail.com');
   await page.locator('#password').fill('123456');
@@ -28,7 +27,6 @@ test('login com sucesso', async ({ page }) => {
  });
 
  test('login com e-mail inválido', async ({ page }) => {
-  await page.goto('https://automationpratice.com.br/');
   await page.getByRole('link', { name: ' Login' }).click();
   await page.locator('#user').fill('teste.teste');
   await page.locator('#password').fill('123456');
@@ -36,7 +34,6 @@ test('login com sucesso', async ({ page }) => {
  });
 
   test('login com senha inválida', async ({ page }) => {
-  await page.goto('https://automationpratice.com.br/');
   await page.getByRole('link', { name: ' Login' }).click();
   await page.locator('#user').fill('erikacrs13@gmail.com');
   await page.locator('#password').fill('12345')
@@ -44,7 +41,6 @@ test('login com sucesso', async ({ page }) => {
  });
 
   test('login com e-mail e senha vazio teste 3', async ({ page }) => {
-  await page.goto('https://automationpratice.com.br/');
   await page.getByRole('link', { name: ' Login' }).click();
   await page.locator('#user').fill('');
   await page.locator('#password').fill('');
