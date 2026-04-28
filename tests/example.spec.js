@@ -40,7 +40,7 @@ test('login com sucesso', async ({ page }) => {
   await page.getByRole('button', { name: 'login' }).click();
  });
 
-  test('login com e-mail e senha vazio', async ({ page }) => {
+  test('login com e-mail e senha vazio teste 3', async ({ page }) => {
   await page.getByRole('link', { name: ' Login' }).click();
   await page.locator('#user').fill('');
   await page.locator('#password').fill('');
