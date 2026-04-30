@@ -1,5 +1,6 @@
 // @ts-check
 import { test, expect } from '@playwright/test';
+import { login, LoginEmailInválido, ValidarTextoPrincipal, AbrirSiteQazando, ClicarNoLogin, DigitarEmail, DigitarSenha, ClicarEmLogar, ValidarSeEstouLogado } from './helpers';
 
 test('has title', async ({ page }) => {
   await page.goto('https://playwright.dev/');
@@ -19,18 +20,21 @@ test('get started link', async ({ page }) => {
 });
 
 test('login com sucesso', async ({ page }) => {
-  await page.getByRole('link', { name: ' Login' }).click();
-  await page.locator('#user').fill('erikacrs13@gmail.com');
-  await page.locator('#password').fill('123456');
-  await page.getByRole('button', { name: 'login' }).click();
-  await expect(page.getByRole('heading', { name: 'Login realizado' })).toBeVisible();
+  await login(page);
+  await ValidarTextoPrincipal(page, 'Login realizado');
+ });
+
+ test('login com sucesso 2', async ({ page }) => {
+  await AbrirSiteQazando(page);
+  await ClicarNoLogin(page);
+  await DigitarEmail(page);
+  await DigitarSenha(page);
+  await ClicarEmLogar(page);
+  await ValidarSeEstouLogado(page);
  });
 
  test('login com e-mail inválido', async ({ page }) => {
-  await page.getByRole('link', { name: ' Login' }).click();
-  await page.locator('#user').fill('teste.teste');
-  await page.locator('#password').fill('123456');
-  await page.getByRole('button', { name: 'login' }).click();
+    await LoginEmailInválido(page);
  });
 
   test('login com senha inválida', async ({ page }) => {
